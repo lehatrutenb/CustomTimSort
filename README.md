@@ -3,6 +3,7 @@ CustomTimSort is a library where you can sort python objects using custom minrun
 How to use:
 ```
 from timsort import timsort, get_minrun
+
 minrun = get_minrun(len(yours_object))
 timsort(your_object, minrun)
 ```
