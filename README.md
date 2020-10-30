@@ -5,7 +5,7 @@ How to use:
 from timsort import timsort, get_minrun
 
 minrun = get_minrun(len(yours_object))
-timsort(your_object, minrun)
+timsort(yours_object, minrun)
 ```
 
 ## *get_minrun(len_of_yours_object: int)* -> int
