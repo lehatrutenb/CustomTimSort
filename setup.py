@@ -1,24 +1,50 @@
+import os
+import sys
+import platform
+from os import listdir
+from sysconfig import get_paths
+from os.path import isfile, join
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+PATH = get_paths()["include"]
+
+
+def create_file_with_includes():
+    files = [file for file in listdir(PATH) if isfile(join(PATH, file))]
+    with open("all_headers.h", 'w') as f:
+        for file in files:
+            if file not in ["pyexpat.h", "py_curses.h", "graminit.h"]:
+                f.write(f"#include <{file}>" + "\n")
+
+create_file_with_includes()
+
 setuptools.setup(
-    name="customtimsort",
-    version="0.0.43",
-    author="lehatr",
-    author_email="lehatrutenb@gmail.com",
+    name='customtimsort',
+    version='0.0.124',
+    author='lehatr',
+    author_email='lehatrutenb@gmail.com',
     description="Timsort sorting algorithm with custom minrun",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/lehatrutenb/FastTimSort",
-    packages=['customtimsort'],
-    package_dir={'customtimsort': 'sorting_code/customtimsort'},
-    package_data={'customtimsort': ['c_timsort/*', 'c_timsort/clinic/*', 'c_timsort/cpython/*']},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3',
+    data_files=[('c', ['listobject.c']),
+                ('h', ['listobject.h']), 
+                ('c.h', ['clinic/listobject.c.h'])], 
+    ext_modules=[
+        setuptools.Extension("customtimsort",
+            sources=["timsort.c"],
+            include_dirs=[
+                os.path.join(os.getcwd(), ''),
+                PATH,
+            ],
+            language='c',
+        )
+    ]
 )
