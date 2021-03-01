@@ -1,6 +1,7 @@
 import os
 import sys
 import platform
+import distutils
 from os import listdir
 from sysconfig import get_paths
 from os.path import isfile, join
@@ -23,7 +24,7 @@ create_file_with_includes()
 
 setuptools.setup(
     name='customtimsort',
-    version='0.0.124',
+    version='0.0.128',
     author='lehatr',
     author_email='lehatrutenb@gmail.com',
     description="Timsort sorting algorithm with custom minrun",
@@ -36,7 +37,8 @@ setuptools.setup(
     ],
     data_files=[('c', ['listobject.c']),
                 ('h', ['listobject.h']), 
-                ('c.h', ['clinic/listobject.c.h'])], 
+                ('c.h', ['clinic/listobject.c.h']),
+               ],
     ext_modules=[
         setuptools.Extension("customtimsort",
             sources=["timsort.c"],
@@ -46,5 +48,8 @@ setuptools.setup(
             ],
             language='c',
         )
-    ]
+    ],
+    py_modules=["get_minrun", "__utils_get_and_parse_data"],
+    packages=["customtimsort_get_minrun"],
+    install_requires=['numpy', 'tensorflow', 'keras']
 )

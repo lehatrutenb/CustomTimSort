@@ -5,39 +5,6 @@
 #include <listobject.c>
 
 static PyObject *
-Get_minrun(PyObject *self, PyObject *args)
-{
-    Py_ssize_t size_of_array;
-    PyObject * buffer;
-    if (!PyArg_ParseTuple(args, "On", &buffer, &size_of_array))
-        return NULL;
-
-    const char* path = PyBytes_AS_STRING(PyUnicode_AsEncodedString(PyObject_Repr(buffer), "utf-8", "~E~"));
-    //char line[30] = {0};
-    //int line_count = -3;
-    printf(path);
-    FILE *file = fopen(path, "r");
-    fclose(file);
-
-    /*int first_size = 0, step = 1;
-    int minrun = 2;
-    while (fgets(line, 30, file))
-    {
-        if (line_count == -3) {
-            first_size = atoi(line);
-        } else if (line_count == -2) {
-            step = atoi(line);
-        } else if (line_count >= 0 && first_size + line_count * step == size_of_array) {
-            minrun = atoi(line);
-        }
-        line_count++;
-    }
-    fclose(file);*/
-    //return PyLong_FromLong(minrun);
-    return PyLong_FromLong(1);
-}
-
-static PyObject *
 timsort(PyObject *self, PyObject *args)
 {
     PyObject * arr;
@@ -50,8 +17,6 @@ timsort(PyObject *self, PyObject *args)
 
 static PyMethodDef TimSortMethods[] = {
     {"timsort",  timsort, METH_VARARGS,
-     "Execute a shell command."},
-    {"Get_minrun",  Get_minrun, METH_VARARGS,
      "Execute a shell command."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };

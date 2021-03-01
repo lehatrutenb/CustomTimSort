@@ -1,4 +1,6 @@
 README.md
+__utils_get_and_parse_data.py
+get_minrun.py
 listobject.c
 listobject.h
 setup.py
@@ -7,4 +9,6 @@ clinic/listobject.c.h
 customtimsort.egg-info/PKG-INFO
 customtimsort.egg-info/SOURCES.txt
 customtimsort.egg-info/dependency_links.txt
+customtimsort.egg-info/requires.txt
 customtimsort.egg-info/top_level.txt
+customtimsort_get_minrun/__init__.py
