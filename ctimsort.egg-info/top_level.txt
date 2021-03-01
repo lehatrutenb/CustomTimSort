@@ -1,4 +1,4 @@
 __utils_get_and_parse_data
-_ctimsort
-customtimsort
+ctimsort
+customtimsort_get_minrun
 get_minrun

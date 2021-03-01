@@ -31,7 +31,7 @@ static struct PyModuleDef timsort_module = {
 };
 
 PyMODINIT_FUNC
-PyInit_customtimsort(void)
+PyInit__ctimsort(void)
 {
     return PyModule_Create(&timsort_module);
 }

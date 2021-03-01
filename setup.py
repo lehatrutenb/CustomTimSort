@@ -24,7 +24,7 @@ create_file_with_includes()
 
 setuptools.setup(
     name='customtimsort',
-    version='0.0.128',
+    version='1.0.1',
     author='lehatr',
     author_email='lehatrutenb@gmail.com',
     description="Timsort sorting algorithm with custom minrun",
@@ -40,7 +40,7 @@ setuptools.setup(
                 ('c.h', ['clinic/listobject.c.h']),
                ],
     ext_modules=[
-        setuptools.Extension("customtimsort",
+        setuptools.Extension("_ctimsort",
             sources=["timsort.c"],
             include_dirs=[
                 os.path.join(os.getcwd(), ''),
@@ -50,6 +50,6 @@ setuptools.setup(
         )
     ],
     py_modules=["get_minrun", "__utils_get_and_parse_data"],
-    packages=["customtimsort_get_minrun"],
+    packages=["customtimsort"],
     install_requires=['numpy', 'tensorflow', 'keras']
 )

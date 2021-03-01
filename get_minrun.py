@@ -12,8 +12,9 @@ def get_minrun_from_builded_model(array_size,
         return float(data["std"]), float(data["mean"])
 
     mean, std = LoadDataConfig(path_to_data)
-    norm_len = normalize_data(array_size, mean, std)
+    norm_len = [[[normalize_data(size, mean, std)]] for size in array_size]
     model = keras.models.load_model(model_name)
-    minrun = model.predict([norm_len])[0][0]
+    minrun = model.predict([norm_len])[0]
+
     return min(array_size, max(1, abs(int(minrun))))
 

@@ -1,4 +1,5 @@
 import json
+import logging
 import numpy as np
 import pandas as pd
 from collections import namedtuple
@@ -14,6 +15,8 @@ l1_l2_params = namedtuple("reg_params", ["l1", "l2"])
 params = namedtuple("parameters", ["epochs", "optimizer", "loss", "metrics",
                                    "regularizer", "dropout", "layer",
                                    "neirons", "reg_params", "activation"])
+
+logging.basicConfig(filename="logs.log", level=logging.INFO)
 
 
 def normalize_data(data, mean, std):
@@ -39,6 +42,10 @@ def get_parsed_data(file_name):
     all_data = train_test_split(test_exam, test_exam_labels,
                                 test_size=0.45, random_state=40)
     data.test, data.exam, data.test_labels, data.exam_labels = all_data
+
+    logging.info('Len test: ' + str(len(data.test)))
+    logging.info('Len train: ' + str(len(data.train)))
+    logging.info('Len validate: ' + str(len(data.exam)))
 
     data.test = np.array_split(data.test, 4)
     data.test_labels = np.array_split(data.test_labels, 4)
