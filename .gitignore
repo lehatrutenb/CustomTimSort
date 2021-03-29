@@ -1,0 +1,7 @@
+__pycache__
+dist
+customtimsort.egg-info
+ctimsort.egg-info
+build_windows
+build
+timsort.egg-info
