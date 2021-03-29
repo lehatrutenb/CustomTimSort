@@ -1,5 +1,8 @@
 # CustomTimSort
 CustomTimSort is a library where you can sort python objects using custom minruns.
+
+## Github: https://github.com/lehatrutenb/CustomTimSort
+
 How to use:
 ```
 from customtimsort import timsort, get_minrun
@@ -12,12 +15,15 @@ timsort(yours_object, minrun)
 Returns predicted minrun for given object's size
 
 :param array_size: size of array we want to predict minrun to
-:param path_to_data: name of json file with keys mean, std, standard: "data.json"
-:param model_name: name of model that will predict minrun, standard: "standard_model"
+
+:param path_to_data: name of json file with keys mean, std, standard: "data.json" - you can get it from my gihub reposiroty (dirictory models)
+
+:param model_name: name of model that will predict minrun, standard: "standard_model" - you can get it from my github repository (dirictory models)
 
 
 ## *timsort(yours_object: some iterable obj, minrun: int)* -> int
 Sorts yours_object using given minrun
 
 :param yours_object: something that you want to sort (but you can't use timsort(yours_object=[...]))
+
 :param minrun: timsort parameter for sorting (but you can't use timsort(minrun=[...]))

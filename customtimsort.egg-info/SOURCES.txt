@@ -1,6 +1,8 @@
 README.md
 __utils_get_and_parse_data.py
 get_minrun.py
+listobject.c
+listobject.h
 setup.py
 timsort.c
 clinic/listobject.c.h
